@@ -1,4 +1,5 @@
-import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router'
+import { createRouter, createWebHashHistory } from 'vue-router'
+import type { RouteRecordRaw } from 'vue-router' //type写不写都可以
 import Home from '../views/Home.vue'
 
 const routes: Array<RouteRecordRaw> = [
