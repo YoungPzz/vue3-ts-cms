@@ -19,3 +19,10 @@ TimeLine
 ##### 如果是局部引用，但样式也要全局引用，很麻烦，希望引入组件的同时引入样式。
 
 ### 8.axios 集成封装
+
+### 9.tsconfig.json
+### 10.defineComponent 
+可以帮助作很多类型限制和推导
+## 2021.10.24 项目业务
+1.normalize.css
+2.

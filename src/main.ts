@@ -5,6 +5,8 @@ import store from './store'
 import './service/axios_demo'
 import { registerApp } from './global'
 import ypRequest from './service'
+import './assets/css/index.less'
+import 'normalize.css'
 const app = createApp(App)
 app.use(registerApp) //当使用app.use传入一个函数时，默认会执行这个函数并传入app，效果和下行相同
 // registerApp(app)
