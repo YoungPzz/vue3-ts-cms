@@ -12,10 +12,13 @@ class YPRequest {
   loading?: ILoadingInstance
   constructor(config: YPRequestConfig) {
     //可以点击config进去看里面的类型
+    //创建axios实例
     this.instance = axios.create(config)
     this.interceptors = config.interceptors
+    //保存基本信息
     this.showLoading = config.showLoading ?? true
-    //从config中取出的拦截器是对应的实例的拦截器
+    //使用拦截器
+    //1.从config中取出的拦截器是对应的实例的拦截器
     this.instance.interceptors.request.use(
       this.interceptors?.requestinterceptor,
       this.interceptors?.requestinterceptorCatch
@@ -25,7 +28,7 @@ class YPRequest {
       this.interceptors?.responseinterceptorCatch
     )
 
-    //添加所有的实例都有的拦截器
+    //2.添加所有的实例都有的拦截器
     this.instance.interceptors.request.use(
       (config) => {
         console.log('这是所有实例都有的拦截器')
@@ -59,21 +62,47 @@ class YPRequest {
       }
     )
   }
-  request(config: YPRequestConfig): void {
-    if (config.interceptors?.requestinterceptor) {
-      config = config.interceptors.requestinterceptor(config)
-    }
-    if (config.showLoading === false) {
-      this.showLoading = config.showLoading
-    }
-    this.instance.request(config).then((res) => {
-      if (config.interceptors?.responseinterceptor) {
-        res = config.interceptors.responseinterceptor(res)
+  request<T>(config: YPRequestConfig): Promise<T> {
+    return new Promise((resolve, reject) => {
+      //1.单个请求对config的处理
+      if (config.interceptors?.requestinterceptor) {
+        config = config.interceptors.requestinterceptor(config)
       }
-      // console.log(res) //48行做了个拦截
+      if (config.showLoading === false) {
+        this.showLoading = config.showLoading
+      }
+      this.instance
+        .request<any, T>(config)
+        .then((res) => {
+          //1.单个请求对数据的处理
+          if (config.interceptors?.responseinterceptor) {
+            res = config.interceptors.responseinterceptor(res)
+          }
+          // console.log(res) //48行做了个拦截
+          //2.将showLoading设置为true，这样不会影响下一个请求
+          this.showLoading = true
 
-      this.showLoading = true
+          //3.将下一个结果resolve出去
+          resolve(res)
+        })
+        .catch((err) => {
+          this.showLoading = true
+          reject(err)
+          return err
+        })
     })
+  }
+  get<T>(config: YPRequestConfig): Promise<T> {
+    return this.request<T>({ ...config, method: 'GET' })
+  }
+  post<T>(config: YPRequestConfig): Promise<T> {
+    return this.request<T>({ ...config, method: 'POST' })
+  }
+  delete<T>(config: YPRequestConfig): Promise<T> {
+    return this.request<T>({ ...config, method: 'DELETE' })
+  }
+  patch<T>(config: YPRequestConfig): Promise<T> {
+    return this.request<T>({ ...config, method: 'PATCH' })
   }
 }
 
