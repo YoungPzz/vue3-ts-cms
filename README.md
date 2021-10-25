@@ -21,8 +21,17 @@ TimeLine
 ### 8.axios 集成封装
 
 ### 9.tsconfig.json
-### 10.defineComponent 
+
+### 10.defineComponent
+
 可以帮助作很多类型限制和推导
+
 ## 2021.10.24 项目业务
+
 1.normalize.css
-2.
+2.login 页 3.登录逻辑 ->vuex
+登录的逻辑  
+ 数据保存到某一个位置  
+ 发送其他的请求
+拿到用户的菜单
+跳到首页

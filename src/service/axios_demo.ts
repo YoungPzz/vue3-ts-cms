@@ -1,4 +1,4 @@
-import axios from 'axios'
+// import axios from 'axios'
 
 //全局axios配置选项
 // axios.defaults.baseURL = 'http://123.207.32.32:8000'
@@ -24,19 +24,17 @@ import axios from 'axios'
 //fn2:请求发送失败会执行的函数
 // axios.interceptors.request.use(fn1, fn2)
 
-axios.interceptors.request.use(
-  (config) => {
-    //想做的动作
-    //1.给请求添加token
-    //2.isLoading动画
-    console.log('请求成功的拦截')
-    return config
-  },
-  (err) => {
-    console.log('请求发送错误')
-    return err
-  }
-)
+// axios.interceptors.request.use(
+//   (config) => {
+//     //想做的动作
+//     //1.给请求添加token
+//     //2.isLoading动画
+//     return config
+//   },
+//   (err) => {
+//     return err
+//   }
+// )
 
 //fn1:服务器正常放回了数据 20x
 // axios.interceptors.response.use(

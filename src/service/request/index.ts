@@ -31,7 +31,6 @@ class YPRequest {
     //2.添加所有的实例都有的拦截器
     this.instance.interceptors.request.use(
       (config) => {
-        console.log('这是所有实例都有的拦截器')
         if (this.showLoading) {
           this.loading = ElLoading.service({
             lock: true,
@@ -47,8 +46,6 @@ class YPRequest {
     )
     this.instance.interceptors.response.use(
       (res) => {
-        console.log('这是所有实例都有的拦截器')
-
         //将loading移除
         setTimeout(() => {
           this.loading?.close()

@@ -7,19 +7,15 @@ const ypRequest = new YPRequest({
   interceptors: {
     //拦截器的本质是传入一个个函数
     requestinterceptor: (config) => {
-      console.log('请求成功的拦截')
       return config
     },
     requestinterceptorCatch: (err) => {
-      console.log('请求失败的拦截')
       return err
     },
     responseinterceptor: (res) => {
-      console.log('响应成功的拦截')
       return res
     },
     responseinterceptorCatch: (err) => {
-      console.log('响应失败的拦截')
       return err
     }
   }

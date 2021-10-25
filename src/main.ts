@@ -18,19 +18,19 @@ interface DataType {
   returnCode: string
   success: boolean
 }
-ypRequest
-  .get<DataType>({
-    url: '/home/multidata',
-    method: 'GET',
-    showLoading: false //false即不用loading
-    // interceptors: {
-    //   requestinterceptor: (config) => {
-    //     console.log('单独成功的拦截')
-    //     return config
-    //   }
-    // }
-  })
-  .then((res) => {
-    console.log(res.data)
-  })
+// ypRequest
+//   .get<DataType>({
+//     url: '/home/multidata',
+//     method: 'GET',
+//     showLoading: false //false即不用loading
+//     // interceptors: {
+//     //   requestinterceptor: (config) => {
+//     //     console.log('单独成功的拦截')
+//     //     return config
+//     //   }
+// //     // }
+//   })
+//   .then((res) => {
+//     // console.log(res.data)
+//   })
 console.log(process.env.VUE_APP_BASE_URL)
