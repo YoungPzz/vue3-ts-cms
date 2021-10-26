@@ -1,15 +1,18 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
 import type { RouteRecordRaw } from 'vue-router' //type写不写都可以
-import login from '../views/login/login.vue'
+import localCache from '@/utils/cache'
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
-    redirect: '/login',
-    component: login
+    redirect: '/main' //先重定向到main，但事先得导航守卫
   },
   {
     path: '/login',
-    component: login
+    component: () => import('@/views/login/login.vue')
+  },
+  {
+    path: '/main',
+    component: () => import('@/views/main/main.vue')
   }
   // {
   //   path: '/',
@@ -31,5 +34,12 @@ const router = createRouter({
   history: createWebHashHistory(),
   routes
 })
-
+router.beforeEach((to) => {
+  if (to.path !== '/login') {
+    const token = localCache.getCache('token')
+    if (!token) {
+      return '/login'
+    }
+  }
+})
 export default router
