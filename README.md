@@ -37,6 +37,7 @@ TimeLine
 跳到首页 —>重定向到首页，如果没有登录，就到登录页
 ps：如果刷新页面，vuex 里面的数据会丢失 //store/index.ts 中 setupStore
 
+```javascript
 
 --.husky  //处理npm run commit
 --node_modules
@@ -46,11 +47,11 @@ ps：如果刷新页面，vuex 里面的数据会丢失 //store/index.ts 中 set
       --img
       --css
 ----components
-----global 
+----global
       --index.ts                   //出口到main.ts，全局配置局部element
       --register-element.ts  //引入elementPlus，并注册相关组件
 ----plugins  //插件
-      --element.js  
+      --element.js
 ----router   //配置路由
 ----service  //网络请求文件夹 //拦截器 loading等
       --login      //登录模块的网络请求
@@ -63,7 +64,7 @@ ps：如果刷新页面，vuex 里面的数据会丢失 //store/index.ts 中 set
       --login //login模块
          --login.ts
       --index.ts  //引入了login模块
-      --types.ts  
+      --types.ts
 ----utils  //工具文件夹
       --cache.ts  //本地缓存
 ----views //视图
@@ -84,3 +85,4 @@ ps：如果刷新页面，vuex 里面的数据会丢失 //store/index.ts 中 set
 --README.md
 --tsconfig.json
 --vue.config.js
+```
