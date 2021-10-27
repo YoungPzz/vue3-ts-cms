@@ -37,7 +37,6 @@ class YPRequest {
             text: '正在加载中'
           })
         }
-
         return config
       },
       (err) => {
@@ -50,7 +49,6 @@ class YPRequest {
         setTimeout(() => {
           this.loading?.close()
         }, 1000)
-
         return res.data //拿到的数据不需要.data
       },
       (err) => {
