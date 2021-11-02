@@ -40,7 +40,7 @@ export default defineComponent({
       if (currentTab.value == 'account') {
         accountRef.value?.loginAction(isRememberPwd.value)
       } else {
-        //手机得验证逻辑
+        //手机的验证逻辑
       }
     }
 

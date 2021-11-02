@@ -8,7 +8,15 @@ import {
   ElInput,
   ElLink,
   ElTabPane,
-  ElTabs
+  ElTabs,
+  ElContainer,
+  ElAside,
+  ElHeader,
+  ElMain,
+  ElMenu,
+  ElMenuItem,
+  ElMenuItemGroup,
+  ElSubmenu
 } from 'element-plus'
 const components = [
   ElButton,
@@ -18,7 +26,15 @@ const components = [
   ElTabs,
   ElFormItem,
   ElLink,
-  ElCheckbox
+  ElCheckbox,
+  ElContainer,
+  ElAside,
+  ElHeader,
+  ElMain,
+  ElMenu,
+  ElMenuItem,
+  ElMenuItemGroup,
+  ElSubmenu
 ]
 import 'element-plus/lib/theme-chalk/index.css'
 export default function (app: App): void {

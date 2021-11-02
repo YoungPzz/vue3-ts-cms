@@ -37,6 +37,10 @@ TimeLine
 跳到首页 —>重定向到首页，如果没有登录，就到登录页
 ps：如果刷新页面，vuex 里面的数据会丢失 //store/index.ts 中 setupStore
 
+## main
+
+### ElementPlus 对 main 进行整体布局
+
 ```javascript
 
 --.husky  //处理npm run commit
@@ -66,7 +70,7 @@ ps：如果刷新页面，vuex 里面的数据会丢失 //store/index.ts 中 set
       --index.ts  //引入了login模块
       --types.ts
 ----utils  //工具文件夹
-      --cache.ts  //本地缓存
+      --cache.ts  //本地缓存 run
 ----views //视图
 ----App.vue
 ----main.ts

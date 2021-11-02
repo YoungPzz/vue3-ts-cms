@@ -16,7 +16,7 @@ const loginMudule: Module<IloginState, IRootState> = {
     return {
       token: '',
       userInfo: '',
-      UserMenus: []
+      userMenus: []
     }
   },
   getters: {},
@@ -27,8 +27,8 @@ const loginMudule: Module<IloginState, IRootState> = {
     changeUserInfo(state, userInfo: any) {
       state.userInfo = userInfo
     },
-    changeUserMenus(state, userMeaus: any) {
-      state.UserMenus = userMeaus
+    changeUserMenus(state, userMenus: any) {
+      state.userMenus = userMenus
     }
   },
   actions: {
@@ -62,11 +62,11 @@ const loginMudule: Module<IloginState, IRootState> = {
       }
       const userInfo = localCache.getCache('userInfo')
       if (userInfo) {
-        commit('changeuserInfo', userInfo)
+        commit('changeUserInfo', userInfo)
       }
-      const UserMenus = localCache.getCache('UserMenus')
-      if (UserMenus) {
-        commit('changeUserMenus', UserMenus)
+      const userMenus = localCache.getCache('userMenus')
+      if (userMenus) {
+        commit('changeUserMenus', userMenus)
       }
     }
   }

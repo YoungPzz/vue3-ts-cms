@@ -5,5 +5,5 @@ export interface IRootState {
 export interface IloginState {
   token: string
   userInfo: any
-  UserMenus: any
+  userMenus: any
 }
