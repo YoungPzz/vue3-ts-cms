@@ -16,7 +16,8 @@ import {
   ElMenu,
   ElMenuItem,
   ElMenuItemGroup,
-  ElSubmenu
+  ElSubmenu,
+  ElIcon
 } from 'element-plus'
 const components = [
   ElButton,
@@ -34,9 +35,12 @@ const components = [
   ElMenu,
   ElMenuItem,
   ElMenuItemGroup,
-  ElSubmenu
+  ElSubmenu,
+  ElIcon,
+  ArrowRight
 ]
 import 'element-plus/lib/theme-chalk/index.css'
+import { ArrowRight } from '@element-plus/icons'
 export default function (app: App): void {
   for (const component of components) {
     app.component(component.name, component)
