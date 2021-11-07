@@ -8,3 +8,10 @@ export interface IFormItem {
   options?: any[] //选择,
   otherOptions?: any
 }
+
+export interface IForm {
+  labelWidth: string
+  itemLayout?: any
+  colLayout: any
+  formItems: IFormItem[]
+}
