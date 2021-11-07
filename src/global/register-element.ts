@@ -17,7 +17,15 @@ import {
   ElMenuItem,
   ElMenuItemGroup,
   ElSubmenu,
-  ElIcon
+  ElIcon,
+  ElDropdown,
+  ElDropdownItem,
+  ElAvatar,
+  ElRow,
+  ElCol,
+  ElSelect,
+  ElOption,
+  ElDatePicker
 } from 'element-plus'
 const components = [
   ElButton,
@@ -37,7 +45,15 @@ const components = [
   ElMenuItemGroup,
   ElSubmenu,
   ElIcon,
-  ArrowRight
+  ArrowRight,
+  ElDropdown,
+  ElDropdownItem,
+  ElAvatar,
+  ElCol,
+  ElRow,
+  ElSelect,
+  ElOption,
+  ElDatePicker
 ]
 import 'element-plus/lib/theme-chalk/index.css'
 import { ArrowRight } from '@element-plus/icons'
