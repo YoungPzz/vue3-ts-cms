@@ -23,7 +23,10 @@
             </template>
             <!-- 遍历里面的item -->
             <template v-for="subitem in item.children" :key="subitem.id">
-              <el-menu-item :index="subitem.id + ''">
+              <el-menu-item
+                :index="subitem.id + ''"
+                @click="handleMenusItemClick(subitem)"
+              >
                 <i v-if="subitem.icon" :class="subitem.icon"></i>
                 <span>{{ subitem.name }}</span>
               </el-menu-item>
@@ -45,7 +48,7 @@
 <script lang="ts">
 import { defineComponent, computed } from 'vue'
 import { useStore } from 'vuex'
-
+import { useRouter } from 'vue-router'
 // vuex - typescript  => pinia
 
 export default defineComponent({
@@ -58,8 +61,15 @@ export default defineComponent({
   setup() {
     const store = useStore()
     const userMenus = computed(() => store.state.login.userMenus)
+    const router = useRouter()
+    const handleMenusItemClick = (item: any) => {
+      router.push({
+        path: item.url ?? '/not-found'
+      })
+    }
     return {
-      userMenus
+      userMenus,
+      handleMenusItemClick
     }
   }
 })

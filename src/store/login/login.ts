@@ -10,6 +10,7 @@ import {
 } from '@/service/login/login'
 import { ILoginAccount } from '@/service/login/types'
 import localCache from '@/utils/cache'
+import { mapMenusToRoutes } from '@/utils/map-menus'
 const loginMudule: Module<IloginState, IRootState> = {
   namespaced: true, //模块来一个命名空间
   state() {
@@ -29,6 +30,13 @@ const loginMudule: Module<IloginState, IRootState> = {
     },
     changeUserMenus(state, userMenus: any) {
       state.userMenus = userMenus
+
+      const routes = mapMenusToRoutes(userMenus)
+
+      //将routes => router.main.children
+      routes.forEach((route) => {
+        router.addRoute('main', route)
+      })
     }
   },
   actions: {
