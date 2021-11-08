@@ -25,7 +25,9 @@ import {
   ElCol,
   ElSelect,
   ElOption,
-  ElDatePicker
+  ElDatePicker,
+  ElBreadcrumb,
+  ElBreadcrumbItem
 } from 'element-plus'
 const components = [
   ElButton,
@@ -53,7 +55,9 @@ const components = [
   ElRow,
   ElSelect,
   ElOption,
-  ElDatePicker
+  ElDatePicker,
+  ElBreadcrumb,
+  ElBreadcrumbItem
 ]
 import 'element-plus/lib/theme-chalk/index.css'
 import { ArrowRight } from '@element-plus/icons'

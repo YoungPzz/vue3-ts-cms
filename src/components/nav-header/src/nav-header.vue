@@ -6,19 +6,23 @@
       @click="handleFoldChange()"
     ></i>
     <div class="content">
-      <div>面包屑</div>
+      <YpBreadCrumb :breadcrumbs="breadcrumbs" />
       <UserInfo />
-      <!-- 面包屑 -->
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from 'vue'
+import { computed, defineComponent, ref } from 'vue'
 import UserInfo from './user-info.vue'
+import YpBreadCrumb from '@/base-ui/breadcrumb/src/breadcrumb.vue'
+import { pathMapBreadcrumbs } from '@/utils/map-menus'
+import { useStore } from 'vuex'
+import { useRoute } from 'vue-router'
 export default defineComponent({
   components: {
-    UserInfo
+    UserInfo,
+    YpBreadCrumb
   },
   emits: ['foldChange'],
   setup(prpos, { emit }) {
@@ -28,7 +32,19 @@ export default defineComponent({
       isFold.value = !isFold.value
       emit('foldChange', isFold.value)
     }
-    return { handleFoldChange, isFold }
+
+    //面包屑的数据
+    const store = useStore()
+
+    const breadcrumbs = computed(() => {
+      const route = useRoute()
+      const userMenus = store.state.login.userMenus
+      const currentRoute = route.path
+      // console.log(userMenus)
+      // console.log(currentRoute)
+      return pathMapBreadcrumbs(userMenus, currentRoute)
+    })
+    return { handleFoldChange, isFold, breadcrumbs }
   }
 })
 </script>

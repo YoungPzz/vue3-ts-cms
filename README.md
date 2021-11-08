@@ -37,6 +37,16 @@ TimeLine
 跳到首页 —>重定向到首页，如果没有登录，就到登录页
 ps：如果刷新页面，vuex 里面的数据会丢失 //store/index.ts 中 setupStore
 
+## 2021.11.7
+
+### p8 1.解决刷新到 not found 的 bug
+
+#### 动态决定:default-active="defalut_value"
+
+#### 解决去到’/main‘ 没有对应 component 的问题 defalut_value
+
+#### 考虑到面包屑可能在其他项目会用，所以直接封装导base-ui里面
+
 ## main
 
 ### ElementPlus 对 main 进行整体布局

@@ -5,7 +5,7 @@
       <span v-if="!collapse" class="title">Keep Dream Alive</span>
     </div>
     <el-menu
-      default-active="2"
+      :default-active="defalut_value"
       class="el-menu-vertical"
       :collapse="collapse"
       background-color="#0c2135"
@@ -46,11 +46,11 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, computed } from 'vue'
+import { defineComponent, computed, ref } from 'vue'
 import { useStore } from 'vuex'
-import { useRouter } from 'vue-router'
+import { useRouter, useRoute } from 'vue-router'
 // vuex - typescript  => pinia
-
+import { pathMapToMenu } from '@/utils/map-menus'
 export default defineComponent({
   props: {
     collapse: {
@@ -62,14 +62,23 @@ export default defineComponent({
     const store = useStore()
     const userMenus = computed(() => store.state.login.userMenus)
     const router = useRouter()
+    const route = useRoute()
+    const currentPath = route.path
+
+    //  确定默认菜单
+    const menu = pathMapToMenu(userMenus.value, currentPath)
+    const defalut_value = ref(menu.id + '') //map-menus.ts
+
     const handleMenusItemClick = (item: any) => {
       router.push({
         path: item.url ?? '/not-found'
       })
     }
+
     return {
       userMenus,
-      handleMenusItemClick
+      handleMenusItemClick,
+      defalut_value
     }
   }
 })
