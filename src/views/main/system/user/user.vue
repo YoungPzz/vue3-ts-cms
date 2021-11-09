@@ -9,6 +9,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue'
+import { useStore } from 'vuex'
 import YpForm from '@/base-ui/form'
 import { formConfig } from './config/search.config'
 export default defineComponent({
@@ -18,6 +19,8 @@ export default defineComponent({
   },
   //所有的配置只需要在search.config.ts里写好就行
   setup() {
+    const store = useStore()
+    store.dispatch('system/')
     return { formConfig }
   }
 })
