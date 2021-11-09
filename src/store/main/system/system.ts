@@ -20,7 +20,11 @@ const systemModule: Module<ISystemState, IRootState> = {
   },
   actions: {
     async getPageListAction({ commit }, payload: any) {
-      const pageResult = await getPageListData(payload.url, payload.queryInfo)
+      // 1.对页面发送请求
+      const pageResult = await getPageListData(
+        payload.pageUrl,
+        payload.queryInfo
+      )
       const { list, totalCount } = pageResult.data
       commit('changeUserList', list)
       commit('changeUserCount', totalCount)

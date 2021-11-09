@@ -53,7 +53,13 @@ ps：如果刷新页面，vuex 里面的数据会丢失 //store/index.ts 中 set
 所以有新方法，但没..emit 1；51：50
 
 #### YpForm 和 PageSearch 的封装
-#### 做search下面的table，把数据都放在vuex，如system单成一个文件夹
+
+#### 做 search 下面的 table，把数据都放在 vuex，如 system 单成一个文件夹
+
+#### user 数据的获取和在 state 中的保存
+
+#### eltable 展示数据和 yptable 的封装
+
 ## main
 
 ### ElementPlus 对 main 进行整体布局

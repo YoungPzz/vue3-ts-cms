@@ -1,4 +1,4 @@
-import ypRequest from '@/service'
+import ypRequest from '../../index'
 
 export function getPageListData(url: string, queryInfo: any) {
   return ypRequest.post({
