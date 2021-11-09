@@ -1,7 +1,7 @@
 <template>
   <div class="user">
     <div class="search">
-      <YpForm v-bind="formConfig" />
+      <page-search :formConfig="formConfig" />
     </div>
     <div class="content"></div>
   </div>
@@ -10,17 +10,23 @@
 <script lang="ts">
 import { defineComponent } from 'vue'
 import { useStore } from 'vuex'
-import YpForm from '@/base-ui/form'
 import { formConfig } from './config/search.config'
+import PageSearch from '@/components/page-search/index'
 export default defineComponent({
   name: 'user',
   components: {
-    YpForm
+    PageSearch
   },
   //所有的配置只需要在search.config.ts里写好就行
   setup() {
     const store = useStore()
-    store.dispatch('system/')
+    store.dispatch('system/getPageListAction', {
+      pageUrl: '/user/list',
+      queryInfo: {
+        offset: 0,
+        size: 10
+      }
+    })
     return { formConfig }
   }
 })

@@ -1,5 +1,8 @@
 <template>
   <div class="yp-form">
+    <div class="header">
+      <slot name="header"></slot>
+    </div>
     <el-form :label-width="labelWidth">
       <el-row>
         <template v-for="item in formItems" :key="item.label">
@@ -11,10 +14,15 @@
                 <el-input
                   :placeholder="item.placeholder"
                   :show-password="item.type === 'password'"
+                  v-model="formData[`${item.field}`]"
                 />
               </template>
               <template v-if="item.type === 'select'">
-                <el-select :placeholder="placeholder" style="width: 100%">
+                <el-select
+                  :placeholder="placeholder"
+                  style="width: 100%"
+                  v-model="formData[`${item.field}`]"
+                >
                   <el-option
                     v-for="option in item.options"
                     :key="option.value"
@@ -27,6 +35,7 @@
                 <el-date-picker
                   v-bind="item.otherOptions"
                   style="width: 100%"
+                  v-model="formData[`${item.field}`]"
                 ></el-date-picker>
               </template>
             </el-form-item>
@@ -34,6 +43,9 @@
         </template>
       </el-row>
     </el-form>
+    <div class="footer">
+      <slot name="footer"></slot>
+    </div>
   </div>
 </template>
 
@@ -42,6 +54,9 @@ import { defineComponent, PropType } from 'vue'
 import { IFormItem } from '../types/index'
 export default defineComponent({
   props: {
+    formData: {
+      type: Object
+    },
     formItems: {
       //prop的类型
       type: Array as PropType<IFormItem[]>,

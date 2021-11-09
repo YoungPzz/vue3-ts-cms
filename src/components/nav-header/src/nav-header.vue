@@ -42,6 +42,8 @@ export default defineComponent({
       const currentRoute = route.path
       // console.log(userMenus)
       // console.log(currentRoute)
+      console.log(123)
+      console.log(pathMapBreadcrumbs(userMenus, currentRoute))
       return pathMapBreadcrumbs(userMenus, currentRoute)
     })
     return { handleFoldChange, isFold, breadcrumbs }
