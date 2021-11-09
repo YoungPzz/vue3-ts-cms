@@ -9,9 +9,7 @@ const systemModule: Module<ISystemState, IRootState> = {
       userCount: 0
     }
   },
-  actions:{
-
-  }
+  actions: {}
 }
 
 export default systemModule
