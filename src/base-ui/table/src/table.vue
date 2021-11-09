@@ -1,6 +1,25 @@
 <template>
   <div class="yp-table">
-    <el-table :data="listData" border style="width: 100%">
+    <!-- selection-change在前面勾选时触发 -->
+    <el-table
+      :data="listData"
+      border
+      style="width: 100%"
+      @selection-change="handleSelectionChange"
+    >
+      <el-table-column
+        v-if="showSelectColum"
+        type="selection"
+        align="center"
+        width="60"
+      ></el-table-column>
+      <el-table-column
+        v-if="showIndexColumn"
+        type="index"
+        label="序号"
+        align="center"
+        width="80"
+      ></el-table-column>
       <template v-for="item in proplist" :key="item.prop">
         <el-table-column v-bind="item" align="center">
           <!-- 默认下的插槽 -->
@@ -25,10 +44,22 @@ export default defineComponent({
     },
     proplist: {
       type: Array
+    },
+    showIndexColumn: {
+      type: Boolean,
+      default: false
+    },
+    showSelectColum: {
+      type: Boolean,
+      default: false
     }
   },
-  setup() {
-    return {}
+  emits: ['selectionChange'],
+  setup(props, { emit }) {
+    const handleSelectionChange = (value: any) => {
+      emit('selectionChange', value)
+    }
+    return { handleSelectionChange }
   }
 })
 </script>

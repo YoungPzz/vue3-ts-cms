@@ -4,15 +4,26 @@
       <page-search :formConfig="formConfig" />
     </div>
     <div class="content">
-      <yp-table :listData="userList" :proplist="proplist">
+      <yp-table
+        :listData="userList"
+        :proplist="proplist"
+        :showIndexColumn="showIndexColumn"
+        :showSelectColum="showSelectColum"
+      >
         <template #status="scope">
-          <el-button>{{ scope.row.enable ? '可用' : '禁用' }}</el-button>
+          <el-button
+            size="mini"
+            :type="scope.row.enable ? 'success' : 'danger'"
+            >{{ scope.row.enable ? '可用' : '禁用' }}</el-button
+          >
         </template>
         <template #createAt="scope">
-          <strong>{{ scope.row.createAt }}</strong>
+          <span>
+            {{ $filters.formatTime(scope.row.createAt) }}
+          </span>
         </template>
         <template #updateAt="scope">
-          <strong>{{ scope.row.updateAt }}</strong>
+          <span>{{ $filters.formatTime(scope.row.updateAt) }}</span>
         </template>
       </yp-table>
     </div>
@@ -64,7 +75,20 @@ export default defineComponent({
         slotname: 'updateAt'
       }
     ]
-    return { formConfig, proplist, userList, userCount }
+
+    //是否显示前面序号
+    const showIndexColumn = true
+
+    //是否选中当前行
+    const showSelectColum = true
+    return {
+      formConfig,
+      proplist,
+      userList,
+      userCount,
+      showIndexColumn,
+      showSelectColum
+    }
   }
 })
 </script>

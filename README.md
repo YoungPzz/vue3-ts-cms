@@ -60,6 +60,10 @@ ps：如果刷新页面，vuex 里面的数据会丢失 //store/index.ts 中 set
 
 #### eltable 展示数据和 yptable 的封装
 
+#### 难点：yptable 的动态插槽和作用域插槽
+### p9 
+#### 1.注册全局函数方法放在global里,install dayjs轻量级的dateFormat库
+
 ## main
 
 ### ElementPlus 对 main 进行整体布局
