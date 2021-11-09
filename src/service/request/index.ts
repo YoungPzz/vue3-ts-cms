@@ -57,7 +57,7 @@ class YPRequest {
       }
     )
   }
-  request<T>(config: YPRequestConfig<T>): Promise<T> {
+  request<T = any>(config: YPRequestConfig<T>): Promise<T> {
     return new Promise((resolve, reject) => {
       //1.单个请求对config的处理
       if (config.interceptors?.requestinterceptor) {
@@ -87,16 +87,16 @@ class YPRequest {
         })
     })
   }
-  get<T>(config: YPRequestConfig<T>): Promise<T> {
+  get<T = any>(config: YPRequestConfig<T>): Promise<T> {
     return this.request<T>({ ...config, method: 'GET' })
   }
-  post<T>(config: YPRequestConfig<T>): Promise<T> {
+  post<T = any>(config: YPRequestConfig<T>): Promise<T> {
     return this.request<T>({ ...config, method: 'POST' })
   }
-  delete<T>(config: YPRequestConfig<T>): Promise<T> {
+  delete<T = any>(config: YPRequestConfig<T>): Promise<T> {
     return this.request<T>({ ...config, method: 'DELETE' })
   }
-  patch<T>(config: YPRequestConfig<T>): Promise<T> {
+  patch<T = any>(config: YPRequestConfig<T>): Promise<T> {
     return this.request<T>({ ...config, method: 'PATCH' })
   }
 }
