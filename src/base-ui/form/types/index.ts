@@ -13,6 +13,6 @@ export interface IFormItem {
 export interface IForm {
   labelWidth: string
   itemLayout?: any
-  colLayout: any
-  formItems: IFormItem[]
+  colLayout?: any
+  formItems?: IFormItem[]
 }

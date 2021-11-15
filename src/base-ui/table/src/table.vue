@@ -1,5 +1,8 @@
 <template>
   <div class="yp-table">
+    <div class="header">
+      <slot name="header"> </slot>
+    </div>
     <!-- selection-change在前面勾选时触发 -->
     <el-table
       :data="listData"
@@ -32,6 +35,20 @@
         </el-table-column>
       </template>
     </el-table>
+    <div class="footer">
+      <slot name="footer">
+        <el-pagination
+          v-model:currentPage="currentPage4"
+          :page-sizes="[100, 200, 300, 400]"
+          :page-size="100"
+          layout="total, sizes, prev, pager, next, jumper"
+          :total="400"
+          @size-change="handleSizeChange"
+          @current-change="handleCurrentChange"
+        >
+        </el-pagination>
+      </slot>
+    </div>
   </div>
 </template>
 

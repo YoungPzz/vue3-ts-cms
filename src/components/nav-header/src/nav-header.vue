@@ -36,16 +36,16 @@ export default defineComponent({
     //面包屑的数据
     const store = useStore()
 
+    //获取当前的route，转化为对应的面包屑数据传给组件
     const breadcrumbs = computed(() => {
       const route = useRoute()
       const userMenus = store.state.login.userMenus
       const currentRoute = route.path
       // console.log(userMenus)
       // console.log(currentRoute)
-      console.log(123)
-      console.log(pathMapBreadcrumbs(userMenus, currentRoute))
       return pathMapBreadcrumbs(userMenus, currentRoute)
     })
+    console.log('123', breadcrumbs)
     return { handleFoldChange, isFold, breadcrumbs }
   }
 })

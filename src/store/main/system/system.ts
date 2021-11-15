@@ -7,27 +7,50 @@ const systemModule: Module<ISystemState, IRootState> = {
   state() {
     return {
       userList: [],
-      userCount: 0
+      userCount: 0,
+      roleList: [],
+      roleCount: 0
     }
   },
   mutations: {
-    changeUserList(state, userList: any[]) {
+    changeusersList(state, userList: any[]) {
       state.userList = userList
     },
-    changeUserCount(state, userCount: number) {
+    changeusersCount(state, userCount: number) {
       state.userCount = userCount
+    },
+    changeroleList(state, roleList: any[]) {
+      state.roleList = roleList
+    },
+    changeroleCount(state, roleCount: number) {
+      state.roleCount = roleCount
+    }
+  },
+  getters: {
+    pageListData(state) {
+      return (pageName: string) => {
+        switch (pageName) {
+          case 'users':
+            return state.userList
+          case 'role':
+            return state.roleList
+        }
+      }
     }
   },
   actions: {
     async getPageListAction({ commit }, payload: any) {
-      // 1.对页面发送请求
-      const pageResult = await getPageListData(
-        payload.pageUrl,
-        payload.queryInfo
-      )
+      //1.getPageUrl
+      const pageName = payload.pageName
+      const pageUrl = `/${pageName}/list`
+      console.log(',,,', pageUrl)
+      //2.对页面发送请求
+      const pageResult = await getPageListData(pageUrl, payload.queryInfo)
+
+      //3.let list into state
       const { list, totalCount } = pageResult.data
-      commit('changeUserList', list)
-      commit('changeUserCount', totalCount)
+      commit(`change${pageName}List`, list)
+      commit(`change${pageName}Count`, totalCount)
     }
   }
 }

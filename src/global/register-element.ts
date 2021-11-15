@@ -29,7 +29,8 @@ import {
   ElBreadcrumb,
   ElBreadcrumbItem,
   ElTable,
-  ElTableColumn
+  ElTableColumn,
+  ElPagination
 } from 'element-plus'
 const components = [
   ElButton,
@@ -61,7 +62,8 @@ const components = [
   ElBreadcrumb,
   ElBreadcrumbItem,
   ElTable,
-  ElTableColumn
+  ElTableColumn,
+  ElPagination
 ]
 import 'element-plus/lib/theme-chalk/index.css'
 import { ArrowRight } from '@element-plus/icons'

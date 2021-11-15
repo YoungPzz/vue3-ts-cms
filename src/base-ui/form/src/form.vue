@@ -71,6 +71,7 @@ export default defineComponent({
       default: () => ({ padding: '10px 40px' })
     },
     colLayout: {
+      //响应式
       type: Object,
       default: () => ({
         //响应式，设置为prop所以可以由外界决定

@@ -61,8 +61,18 @@ ps：如果刷新页面，vuex 里面的数据会丢失 //store/index.ts 中 set
 #### eltable 展示数据和 yptable 的封装
 
 #### 难点：yptable 的动态插槽和作用域插槽
-### p9 
-#### 1.注册全局函数方法放在global里,install dayjs轻量级的dateFormat库
+
+### p9
+
+#### 1.注册全局函数方法放在 global 里,install dayjs 轻量级的 dateFormat 库
+
+#### 2.国际化
+
+#### 3.YPtable 的头部和尾部
+
+#### 4.user.vue -> page-content page-header ->yptable,ypsearch
+
+#### 5.vuex 中针对不同页面的数据处理
 
 ## main
 
@@ -75,8 +85,13 @@ ps：如果刷新页面，vuex 里面的数据会丢失 //store/index.ts 中 set
 --public
 --src
 ----assets
-      --img
-      --css
+    --img
+    --css
+----base-ui  //放置一些其他项目可能用到的组件。
+    --breadcrumb  //面包屑,别的组件用到这个组件，只需要传breadcrumbs即可，这里nav-header用到了，并通过路由查寻出结果，传递数据
+    --form        //搜索框表单，这里用到三层封装。user.vue里引用page-search,page-search引用YpForm
+                  //这里在user/config/search.config里配置好formConfig传到page-search,再通过v-bind传给YpForm
+    --table       //content里面的表格
 ----components
 ----global
       --index.ts                   //出口到main.ts，全局配置局部element
