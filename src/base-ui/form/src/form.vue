@@ -11,17 +11,21 @@
               <template
                 v-if="item.type === 'input' || item.type === 'password'"
               >
+                <!-- v-model="formData[`${item.field}`]" 现在不用双向绑定 -->
+                <!-- model-value and @update 这两行都是双向绑定的语法糖 -->
                 <el-input
                   :placeholder="item.placeholder"
                   :show-password="item.type === 'password'"
-                  v-model="formData[`${item.field}`]"
+                  :model-value="modelValue[`${item.field}`]"
+                  @update:modelValue="handleValueChange($event, item.field)"
                 />
               </template>
               <template v-if="item.type === 'select'">
                 <el-select
                   :placeholder="placeholder"
                   style="width: 100%"
-                  v-model="formData[`${item.field}`]"
+                  :model-value="modelValue[`${item.field}`]"
+                  @update:modelValue="handleValueChange($event, item.field)"
                 >
                   <el-option
                     v-for="option in item.options"
@@ -35,7 +39,8 @@
                 <el-date-picker
                   v-bind="item.otherOptions"
                   style="width: 100%"
-                  v-model="formData[`${item.field}`]"
+                  :model-value="modelValue[`${item.field}`]"
+                  @update:modelValue="handleValueChange($event, item.field)"
                 ></el-date-picker>
               </template>
             </el-form-item>
@@ -54,8 +59,9 @@ import { defineComponent, PropType } from 'vue'
 import { IFormItem } from '../types/index'
 export default defineComponent({
   props: {
-    formData: {
-      type: Object
+    modelValue: {
+      type: Object,
+      required: true
     },
     formItems: {
       //prop的类型
@@ -83,8 +89,23 @@ export default defineComponent({
       })
     }
   },
-  setup() {
-    return {}
+  emits: ['update:modelValue'], //modelvalue的发射事件，在讲组件的双向绑定时有讲
+  setup(props, { emit }) {
+    // 1.双向绑定
+    // const formData = ref({ ...props.modelValue }) //这里解构modelValue并且复制粘贴到新的对象formData，目的是不影响原来的modelValue
+
+    // watch(formData, (newValue) => emit('updata:modelValue', newValue), {
+    //   //当formData发生变化，发送emit修改父组件的值
+    //   deep: true //深度监听
+    // })
+
+    //2.不用双向绑定
+    const handleValueChange = (value: any, field: string) => {
+      emit('update:modelValue', { ...props.modelValue, [field]: value })
+    }
+    return {
+      handleValueChange
+    }
   }
 })
 </script>

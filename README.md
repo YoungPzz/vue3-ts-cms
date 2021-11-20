@@ -62,6 +62,10 @@ ps：如果刷新页面，vuex 里面的数据会丢失 //store/index.ts 中 set
 
 #### 难点：yptable 的动态插槽和作用域插槽
 
+### p8
+
+#### 1.数据 v-model 双向绑定 <yp-form v-model="formData"  /> 与组件双向绑定，在组件里接受到的 prop 名为 model.value，form.vue 里有注释
+
 ### p9
 
 #### 1.注册全局函数方法放在 global 里,install dayjs 轻量级的 dateFormat 库
@@ -74,6 +78,17 @@ ps：如果刷新页面，vuex 里面的数据会丢失 //store/index.ts 中 set
 
 #### 5.vuex 中针对不同页面的数据处理
 
+### p10
+
+#### 1.父子组件双向绑定，重置时的问题。当点击重置按钮时，执行 page-search.vue 里的 uou，因为这样才可以使子组件触发
+
+#### 2.也可以不用绑定来做。用这种语法糖来做
+
+````javascript
+                  :model-value="modelValue[`${item.field}`]"
+                  @update:modelValue="handleValueChange($event, item.field)"
+````
+#### 3.搜索数据 
 ## main
 
 ### ElementPlus 对 main 进行整体布局
@@ -131,4 +146,4 @@ ps：如果刷新页面，vuex 里面的数据会丢失 //store/index.ts 中 set
 --README.md
 --tsconfig.json
 --vue.config.js
-```
+````

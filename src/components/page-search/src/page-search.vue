@@ -1,6 +1,6 @@
 <template>
   <div class="page-search">
-    <YpForm v-bind="formConfig" :formData="formData">
+    <YpForm v-bind="formConfig" v-model="formData">
       <template #header>高级检索</template>
       <template #footer>
         <div class="btns">
@@ -39,15 +39,15 @@ export default defineComponent({
 
     // 优化二：当用户点击重置
     const handleResetClick = () => {
+      // formData.value = formOriginData 如果是这样的方法，因为...props.modelvalue是浅拷贝,不能改变子组件的值
+      //UOU for (const key in formOriginData) {
+      //   formData.value[`${key}`] = formOriginData[key]
+      // }
+
+      //不用双向绑定
       formData.value = formOriginData
     }
-    // const formData = reactive({
-    //   id: '',
-    //   name: '',
-    //   password: '',
-    //   sport: '',
-    //   createTime: ''
-    // })
+
     return { formData, handleResetClick }
   }
 })
